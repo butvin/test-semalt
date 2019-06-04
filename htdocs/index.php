@@ -8,26 +8,33 @@
  * Email:	butvin.sergey@gmail.com
  */
 
+/**
+ *
+ */
 include 'lib/classTask.php';
 
 echo "Task #1";
 echo "<hr>";
-$task_1 = new TestTask;
-$str = 'A lead generating website';
-$task_1->setString($str);
-$task_1->setJump(2);
-$arr = $task_1->getString();
-TestTask::output($task_1->generateArray($arr));
+$task = new Test\TestTask;
+
+$string = 'A lead generating website';
+$task->setString($string);
+$task->setJump(2);
+$jump = (int)$task->getJump();
+$str = $task->getString();
+
+Test\TestTask::output($task->generateArray($str, $jump));
 
 echo "Task #2";
 echo "<hr>";
-TestTask::output(TestTask::cutNumbers());
+$arrayData = Test\TestTask::cutNumbers();
+Test\TestTask::output($arrayData);
 
 echo "Task #3";
 echo "<hr>";
-$task_3 = new TestTask();
-$task_3->setPath('/test/');
-$task_3->setSuffix('.txt');
-TestTask::output($task_3->sortFiles(), true);
-
-
+$task->setPath('/test/');
+$path = $task->getPath();
+$task->setSuffix('.txt');
+$suffix = $task->getSuffix();
+$data = $task->sortFiles($path, $suffix);
+Test\TestTask::output($data, true);

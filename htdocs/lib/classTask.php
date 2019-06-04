@@ -1,8 +1,11 @@
 <?php
 
-class TestTask {
-	/**
-	 * Private variables for class operations
+namespace Test;
+
+class TestTask
+{
+    /**
+     * Private variables for class operations
 	 * @var $_inputString (string)
 	 * @var $_jump (integer)
 	 * @var $_path; (string)
@@ -10,58 +13,63 @@ class TestTask {
 	 * @var $_suffix (string)
 	 *    example: .txt|.log|.abc
 	 */
-	private $_inputString;
-	private $_jump;
-	private $_path;
-	private $_suffix;
+	private $inputString;
+	private $jump;
+	private $path;
+	private $suffix;
 	/**
 	 * @const STR is reserved string for Task #2
 	 */
 	const STR = 'This server has 386GB RAM and 5000 GB storage';
 
 	/**
-	 * Setter for private variable $_inputString
+	 * Setter for private variable $inputString
 	 * Task #1
 	 * @param string $string
 	 */
-	public function setString(string $string) {
-		$this->_inputString = $string;
+	public function setString(string $string):void
+    {
+		$this->inputString = $string;
 	}
 
 	/**
-	 * Getter for private variable $_inputString
+	 * Getter for private variable $inputString
 	 * Task #1
 	 * @return string
 	 */
-	public function getString():string {
-		return $this->_inputString;
+	public function getString():string
+    {
+		return $this->inputString;
 	}
 
 	/**
-	 * Setter for private variable $_jump
+	 * Setter for private variable $jump
 	 * Task #1
 	 * @param int $jump
 	 */
-	public function setJump(int $jump) {
-		$this->_jump = $jump;
+	public function setJump(int $jump):void
+    {
+		$this->jump = $jump;
 	}
 
 	/**
-	 * Getter for private variable $_jump
+	 * Getter for private variable $jump
 	 * Task #1
 	 * @return int
 	 */
-	public function getJump():int {
-		return $this->_jump;
+	public function getJump():int
+    {
+		return $this->jump;
 	}
 
 	/**
 	 * @param string $path
 	 * Task #3
-	 * Setter for private variable $_path
+	 * Setter for private variable $path
 	 */
-	public function setPath(string $path){
-		$this->_path = $path;
+	public function setPath(string $path):void
+    {
+		$this->path = $path;
 	}
 
 	/**
@@ -69,26 +77,29 @@ class TestTask {
 	 * Task #3
 	 * @return string
 	 */
-	public function getPath():string {
-		return $this->_path;
+	public function getPath():string
+    {
+		return $this->path;
 	}
 
 	/**
-	 * Setter for private variable $_suffix
+	 * Setter for private variable $suffix
 	 * Task 3
 	 * @param string $suffix
 	 */
-	public function setSuffix(string $suffix){
-		$this->_suffix = $suffix;
+	public function setSuffix(string $suffix):void
+    {
+		$this->suffix = $suffix;
 	}
 
 	/**
-	 * Getter for private variable $_suffix
+	 * Getter for private variable $suffix
 	 * Task 3
 	 * @return string
 	 */
-	public function getSuffix():string {
-		return $this->_suffix;
+	public function getSuffix():string
+    {
+		return $this->suffix;
 	}
 
 	/**
@@ -98,18 +109,17 @@ class TestTask {
 	 * @param int $jump
 	 * @return array
 	 */
-	public function generateArray(string $inputString = '', int $jump = 2):array {
-
+	public function generateArray($inputString, $jump):array
+    {
 		$inputString = $this->getString() ? $this->getString() : $inputString;
 		$jump = $this->getJump() ? $this->getJump() : $jump;
-
 		$outputArray =[];
 		/** @var $inputArray - contains array, where each element is a world of input string */
 		$inputArray = explode(' ', trim($inputString));
 		$num = count($inputArray);
 		if ($num <= $jump) return $inputArray;
 		$lastIndex = $num -1;
-		while ( $jump <= $num){
+		while ($jump <= $num) {
 			$i = 0;
 			while ( $i <= $lastIndex ) {
 				$item = array_slice($inputArray, $i, $jump);
@@ -126,9 +136,9 @@ class TestTask {
 	 * Implement an algorithm for extracting numeric values and dimensions from a string
 	 * @return array
 	 */
-	static public function cutNumbers():array {
+	static public function cutNumbers():array
+    {
 		$string = self::STR;
-		// $string = str_replace(',', '.', $string);
 		/** @var $regex - contain RegExp for cut natural numbers and dimensions with or
 		 * without space.
 		 */
@@ -142,8 +152,8 @@ class TestTask {
 	 * @param string $suffix
 	 * @return array
 	 */
-	public function sortFiles(string $path = '/test/', string $suffix = '.txt'):array {
-
+	public function sortFiles($path, $suffix):array
+    {
 		$path = $this->getPath() ? $this->getPath() : $path;
 		$suffix = $this->getSuffix() ? $this->getSuffix() : $suffix;
 		/** @var  $filePath - contain full path to folder */
@@ -168,9 +178,9 @@ class TestTask {
 	 * @param array $array
 	 * @param bool $files
 	 */
-	static public function output(array $array, $files = false) {
+	static public function output(array $array, $files = false)
+    {
 		if (!$array && empty($array)) echo "empty array";
-
 		if ($files === true) {
 			$i = 1;
 			echo "<pre>";
