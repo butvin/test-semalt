@@ -22,8 +22,8 @@ $task->setString($string);
 $task->setJump(2);
 $jump = (int)$task->getJump();
 $str = $task->getString();
-
-Test\TestTask::output($task->generateArray($str, $jump));
+$resultArray = $task->generateArray($str, $jump);
+Test\TestTask::output($resultArray);
 
 echo "Task #2";
 echo "<hr>";
